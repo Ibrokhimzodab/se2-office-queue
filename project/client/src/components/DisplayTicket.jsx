@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './DisplayTicketCSS.css';  // Importa il file CSS
 
 export function DisplayTicket(props) {
   const navigate = useNavigate();
   const [counter, setCounter] = useState(30);
+  const param = useParams();
 
   useEffect(() => {
     const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -23,7 +24,7 @@ export function DisplayTicket(props) {
       <Card className="card" style={{ width: '18rem' }}>
         <div className="card-number">{props.number || 123}</div>
         <Card.Body>
-          <Card.Title className="card-title">Card Title</Card.Title>
+          <Card.Title className="card-title">{param.service}</Card.Title>
           <Card.Text className="card-text">
             Waiting Time:
           </Card.Text>
