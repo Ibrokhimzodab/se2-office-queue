@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import './DisplayTicketCSS.css';  // Importa il file CSS
+import '../assets/style/DisplayTicket.css';  // Importa il file CSS
 
 export function DisplayTicket(props) {
   const navigate = useNavigate();

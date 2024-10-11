@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './GetTicketFormCSS.css';
+import '../assets/style/GetTicketForm.css';
 
 export function GetTicketForm(props) {
     const navigate = useNavigate();
 
     const handleTicketSelection = () => {
-      navigate('/ticketsummary');
+      navigate('/ticket');
     };
   
     return (
