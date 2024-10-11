@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './GetTicketFormCSS.css';
 
 export function GetTicketForm(props) {
     const navigate = useNavigate();
+    const [service, setService] = useState([]);
 
     const handleTicketSelection = () => {
-      navigate('/ticketsummary');
+      navigate(`/ticketsummary/${service}`);
+
     };
   
     return (
       <div className="home-page">
         <Container className="text-center">
           <h1 className="my-5">Select Service</h1>
-          <Form.Select aria-label="services-list">
+          <Form.Select aria-label="services-list" onChange={ev => setService(ev.target.value)} >
             {/*<option></option>*/}
             <option value="1">Service 1</option>
             <option value="2">Service 2</option>
