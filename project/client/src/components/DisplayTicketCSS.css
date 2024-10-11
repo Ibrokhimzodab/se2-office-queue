@@ -1,0 +1,52 @@
+/* Impostare uno sfondo colorato per l'intera pagina */
+body {
+    background-color: #4f9ee3; /* Azzurro chiaro */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Centrare la card e il timer verticalmente e orizzontalmente */
+  .center-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Altezza pari alla finestra */
+    flex-direction: column;  /* Disposizione verticale di card e timer */
+  }
+  
+  /* Stile personalizzato per la card */
+  .card {
+    background-color: #ffebcd; /* Beige chiaro */
+    border-radius: 15px; /* Angoli arrotondati per un look più morbido */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Ombra per dare profondità */
+  }
+  
+  /* Stile per il titolo della card */
+  .card-title {
+    color: #2c3e50; /* Blu scuro */
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Stile per il testo nella card */
+  .card-text {
+    color: #8e44ad; /* Viola */
+    text-align: center;
+  }
+  
+  /* Stile per il timer */
+  .timer {
+    font-size: large;
+    margin-top: 5px;
+    color: #e74c3c; /* Rosso acceso */
+    font-weight: bold;
+  }
+
+  .card-number {
+    font-size: 48px;  /* Dimensione del testo grande */
+    font-weight: bold;  /* Testo in grassetto */
+    color: #3498db;  /* Colore del numero (azzurro brillante) */
+    text-align: center;  /* Centrare il numero */
+    padding: 20px 0;  /* Spazio interno per un po' di padding sopra e sotto */
+  }
+  
