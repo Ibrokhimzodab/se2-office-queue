@@ -1,0 +1,33 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: Office Queue Management
+  datasource:
+    url: jdbc:postgresql://localhost:5432/office_queue
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 3
+      minimum-idle: 2
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+  rabbitmq:
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 5
+          initial-interval: 1000
+          multiplier: 2.0
+          max-interval: 10000
+  liquibase:
+    enabled: false
+
