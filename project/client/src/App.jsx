@@ -10,7 +10,7 @@ function App() {
       <Route path='/' element={
           <GetTicketForm/>
       } />
-      <Route path='/ticketsummary' element={
+      <Route path='/ticket/:service' element={
           <DisplayTicket/>
       } />
    </Routes>
