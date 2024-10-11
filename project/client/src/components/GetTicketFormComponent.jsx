@@ -8,7 +8,7 @@ export function GetTicketForm(props) {
     const [service, setService] = useState([]);
 
     const handleTicketSelection = () => {
-      navigate(`/ticketsummary/${service}`);
+      navigate(`/ticket/${service}`);
 
     };
   
