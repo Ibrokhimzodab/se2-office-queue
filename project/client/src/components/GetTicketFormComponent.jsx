@@ -5,7 +5,7 @@ import './GetTicketFormCSS.css';
 
 export function GetTicketForm(props) {
     const navigate = useNavigate();
-    const [service, setService] = useState([]);
+    const [service, setService] = useState("Service 1");
 
     const handleTicketSelection = () => {
       navigate(`/ticket/${service}`);
