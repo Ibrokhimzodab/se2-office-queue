@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "2b50d7d1-538e-4632-925c-dc5f57727ae4",
+		"name": "OfficeQueueManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4016750"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/customers/next",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/customers/next",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"customers",
+						"next"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:8001"
+		}
+	]
+}
