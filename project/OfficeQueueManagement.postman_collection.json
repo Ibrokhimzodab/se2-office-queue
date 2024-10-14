@@ -15,12 +15,11 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8001/customers/next",
+					"raw": "http://{{host}}/customers/next",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8001",
 					"path": [
 						"customers",
 						"next"
