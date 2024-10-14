@@ -1,0 +1,23 @@
+.queue {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20%;
+}
+.counter{
+    width: 20px;
+    text-align: center;
+}
+.queue th, .queue td {
+    padding: 15px;
+    border-bottom: 2px solid #228cef;
+    background-color: #ffffff;
+  }
+  
+  .queue thead {
+    background-color: #bbc5cf;
+    color: white;
+  }
+  
+  body{
+    background-color: rgb(255, 255, 255);
+  }
