@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -15,22 +13,15 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "services")
-public class Service {
+@Table(name = "counters")
+public class CounterEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    @JoinTable(
-            name = "counter_services",
-            joinColumns = @JoinColumn(name = "service_id"),
-            inverseJoinColumns = @JoinColumn(name = "counter_id")
-    )
-    private Set<Counter> counters = new HashSet<>();
+    @ManyToMany(mappedBy = "counters")
+    private Set<ServiceEntity> services = new HashSet<>();
 
     private String name;
-
-    private Integer durationInMinutes;
 }

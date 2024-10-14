@@ -13,17 +13,17 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "tickets")
-public class Ticket {
+public class TicketEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private Counter counter;
+    private CounterEntity counter;
 
     @ManyToOne
-    private Service service;
+    private ServiceEntity service;
 
     private String waitListCode;
 
