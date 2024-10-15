@@ -3,52 +3,68 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../assets/style/GetTicketForm.css';
 
-const INITIAL_SERVICE = [
+const MOCK_SERVICE_LIST = [
   1,3,4,5
 ];
 
 export function GetTicketForm(props) {
     const navigate = useNavigate();
-    const [service, setService] = useState();
+    const [selectedService, setSelectedService] = useState(null);
     const [serviceList, setServiceList] = useState([]);
     const [loading, setLoading] = useState(true);
-    let List = [];
-    const handleTicketSelection = () => {
-      navigate(`/ticket/${service}`);
 
+    useEffect(() => {
+        // Simulating service load
+        const loadServiceList = async () => {
+            try {
+                // Simulate loading the service list
+                setServiceList(MOCK_SERVICE_LIST);
+            } catch (error) {
+                console.error("Error loading service list:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadServiceList();
+    }, []);
+
+    const handleServiceSelection = (e) => {
+        setSelectedService(e.target.value);
     };
-    /*
-    useEffect(()=>{
-      loadService().then((my_service)=>{
-          setServiceList(my_service);
-          setLoading(false);
-      })
-      
-  }, [])
 
-  */
-
-    if(loading===true){
-      console.log(INITIAL_SERVICE)
-    INITIAL_SERVICE.forEach((s)=>List.push(s))
-      setServiceList(List);
-      setLoading(false);
-    }
-      
+    const handleGetTicketClick = () => {
+        // Navigate only if a service is selected
+        if (selectedService) {
+            navigate(`/ticket/${selectedService}`);
+        } else {
+            alert("Please select a service.");
+        }
+    };
 
   
     return (
       <div className="home-page">
         <Container className="text-center">
           <h1 className="my-5">Select Service</h1>
-          {!loading && <Form.Select aria-label="services-list" onChange={ev => setService(ev.target.value)} >
-            { serviceList.map((s) => <option value={s}>{s}</option>)}
-          </Form.Select>
-          }
-          <Button variant="primary" size="lg" className="mx-3" onClick={handleTicketSelection}>
-            Get Ticket
+          {!loading && (
+            <Form.Select 
+              aria-label="services-list" 
+              value={selectedService || ''}
+              onChange={handleServiceSelection} >
+                <option value="" disabled>Select a service</option>
+                { serviceList.map((service) => 
+                  <option key={service} value={service}>{service}</option>
+                )}
+            </Form.Select>
+          )}
+          <Button 
+            variant="primary" 
+            size="lg" 
+            className="mx-3"
+            disabled={loading || !selectedService}
+            onClick={handleGetTicketClick}>
+              Get Ticket
           </Button>
-
         </Container>
       </div>
     );

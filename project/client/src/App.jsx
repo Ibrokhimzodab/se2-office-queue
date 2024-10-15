@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { GetTicketForm } from './components/GetTicketFormComponent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
