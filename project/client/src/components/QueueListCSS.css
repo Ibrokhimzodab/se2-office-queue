@@ -1,0 +1,48 @@
+.queue {
+  width: 80%;
+  left: 5%;
+  margin-top: 20%;
+  position: relative; /* Posizionamento relativo per la tabella */
+}
+
+.button_call {
+  color: white;
+  background-color: #007bff; /* Colore blu per il bottone */
+  border-radius: 8px; /* Leggera arrotondatura degli angoli */
+  padding: 8px 16px; /* Dimensioni compatte del bottone */
+  width: 12%;
+  font-size: 1rem;
+  position: absolute;
+  bottom: -50px; /* Posiziona il bottone sotto la tabella */
+  right: 12%; /* Allinea a destra */
+  margin: 10px;
+  border: none; /* Rimuove il bordo */
+  display: inline-block;
+  cursor: pointer; /* Mostra il puntatore mano */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+}
+
+.button_call:hover {
+  background-color: #0056b3; /* Cambia colore quando il mouse è sopra */
+}
+
+.counter {
+  width: 20px;
+  text-align: center;
+}
+
+.queue th, .queue td {
+  padding: 15px;
+  border-bottom: 2px solid #4a5ef1;
+  background-color: #ffffff;
+}
+
+.queue thead {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+}
