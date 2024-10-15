@@ -28,7 +28,6 @@ export function GetTicketForm(props) {
 
   */
 
-  
     if(loading===true){
       console.log(INITIAL_SERVICE)
     INITIAL_SERVICE.forEach((s)=>List.push(s))
