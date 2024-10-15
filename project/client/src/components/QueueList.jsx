@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './QueueListCSS.css';
 
@@ -7,7 +7,7 @@ export function QueueList(props) {
     const navigate = useNavigate();
 
     return (
-      <>
+      <Container className='container'>
       <Table className='queue' hover>
         <thead>
             <tr>
@@ -35,6 +35,6 @@ export function QueueList(props) {
         </tbody>
     </Table>
     <Button className='button_call'>Call next</Button>
-    </>
+    </Container>
     );
   }
