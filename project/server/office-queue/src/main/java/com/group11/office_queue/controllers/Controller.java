@@ -4,7 +4,6 @@ import com.group11.office_queue.models.NextCustomerDTO;
 import com.group11.office_queue.models.QueueDTO;
 import com.group11.office_queue.models.ServiceDTO;
 import com.group11.office_queue.models.TicketDTO;
-import com.group11.office_queue.services.CounterService;
 import com.group11.office_queue.services.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import java.util.List;
 public class Controller {
 
     private final TicketService ticketService;
-    private final CounterService counterService;
 
     @GetMapping("/ticket")
     public ResponseEntity<TicketDTO> getNewTicket(@RequestParam Long serviceId) {
@@ -31,8 +29,8 @@ public class Controller {
     }
 
     @PostMapping(value = "/counters/{counterId}/next")
-    public ResponseEntity<NextCustomerDTO> nextCustomer(@PathVariable String counterId) {
-        return ResponseEntity.ok(counterService.nextCustomer(counterId));
+    public ResponseEntity<NextCustomerDTO> nextCustomer(@PathVariable Long counterId) {
+        return ResponseEntity.ok(ticketService.nextCustomer(counterId));
     }
 
     @GetMapping("/queues")
