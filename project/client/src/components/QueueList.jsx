@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import API from '../API.mjs';
 import '../assets/style/QueueListCSS.css';
 // Mocked API function for demonstration purposes
 const fetchQueueList = async () => {
@@ -22,7 +23,7 @@ export function QueueList(props) {
     const loadQueueList = async () => {
       try {
         setLoading(true);
-        const list = await fetchQueueList();  // Replace with actual API call
+        const list = await API.fetchQueueList(counter);
         setQueueList(list);
       } catch (err) {
         setError('Failed to fetch queue list');
@@ -74,7 +75,7 @@ export function QueueList(props) {
     </Table>
     <Form.Select 
               aria-label="counter-list" 
-              value={selectedCounter || ''}
+            //   value={selectedCounter || ''}
               onChange={handleCounterSelection} >
                 <option value="" disabled>Select a counter</option>
                   <option value='1'>1</option>

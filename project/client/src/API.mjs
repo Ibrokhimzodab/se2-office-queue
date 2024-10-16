@@ -27,7 +27,28 @@ async function getTicket(service) {
         }
 }
 
+async function fetchQueueList(counterID) {
+    try {
+        const response = await fetch(`${url}/counters/${counterID}/next`);
+        
+        if (response.ok) {
+            const queueList = await response.json();
+            return queueList;
+        } else {
+            const errDetail = await response.json();
+            if (errDetail.error)
+                throw errDetail.error;
+            if (errDetail.message)
+                throw errDetail.message;
+            
+            throw "Something went wrong while fetching the queue list.";
+        }
+    } catch (error) {
+        console.error(`Error fetching queue list for counter ${counterID}:`, error);
+        throw error;  
+    }
+}
 
-const API ={loadService}
+const API ={loadService, getTicket, fetchQueueList}
 
 export default API;
