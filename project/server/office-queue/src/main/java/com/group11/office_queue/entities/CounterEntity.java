@@ -1,6 +1,7 @@
 package com.group11.office_queue.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,7 +21,7 @@ public class CounterEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(mappedBy = "counters")
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<ServiceEntity> services = new HashSet<>();
 
     private String name;
