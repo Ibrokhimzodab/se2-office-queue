@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/customers/next",
+			"name": "http://{{host}}/customers/next",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -23,6 +23,66 @@
 					"path": [
 						"customers",
 						"next"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{host}}/ticket?serviceId=5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/ticket?serviceId=5",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"ticket"
+					],
+					"query": [
+						{
+							"key": "serviceId",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{host}}/services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/services",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{host}}/queues",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/queues",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"queues"
 					]
 				}
 			},
