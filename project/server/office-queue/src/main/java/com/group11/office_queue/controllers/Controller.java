@@ -34,4 +34,10 @@ public class Controller {
         return ResponseEntity.ok(counterService.nextCustomer(counterId));
     }
 
+    @GetMapping("/call/{waitListCode}")
+    public ResponseEntity<ServiceDTO> callCustomer(@PathVariable String waitListCode) {
+        return ResponseEntity.ok(counterService.callCustomer(waitListCode));
+    }
+
+
 }
