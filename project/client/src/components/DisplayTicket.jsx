@@ -18,7 +18,7 @@ export function DisplayTicket(props) {
     const loadInfoTicket = async () => {
         try {
             API.getTicket(id).then((tick) =>{
-              setTicket(new Ticket(tick.id,tick.waitListCode))
+              setTicket(new Ticket(tick.waitListCode,tick.estimatedTime))
             })
         } catch (error) {
             console.error("Error getting ticket:", error);

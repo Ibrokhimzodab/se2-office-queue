@@ -3,6 +3,7 @@ import { Table, Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import API from '../API.mjs';
 import '../assets/style/QueueListCSS.css';
+import { Ticket } from '../obj/Ticket.mjs';
 // Mocked API function for demonstration purposes
 const fetchQueueList = async () => {
   // Simulate a real API call
@@ -17,14 +18,39 @@ export function QueueList(props) {
     const [queueList, setQueueList] = useState([]);  
     const [loading, setLoading] = useState(true);    
     const [error, setError] = useState(null); 
-    const [counter, setCounter] = useState();
+    const [counter, setCounter] = useState(1);
     const [selectedCounter,setSelectedCounter] = useState();
 
     const loadQueueList = async () => {
       try {
         setLoading(true);
-        const list = await API.fetchQueueList(counter);
-        setQueueList(list);
+        const list = await API.getQueue().then((my_q) =>{
+          let queue = []
+          for(const q of my_q){
+            queue.push(new Ticket(q.tickets[0].waitListCode,0,q.serviceName,0))
+          }
+          
+          setQueueList(queue);
+        })
+      } catch (err) {
+        setError('Failed to fetch queue list');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const loadNewQueueList = async () => {
+      try {
+        setLoading(true);
+        await API.callNext(counter)
+        const list = await API.getQueue().then((my_q) =>{
+          let queue = []
+          for(const q of my_q){
+            queue.push(new Ticket(q.tickets[0].waitListCode,0,q.serviceName,0))
+          }
+          
+          setQueueList(queue);
+        })
       } catch (err) {
         setError('Failed to fetch queue list');
       } finally {
@@ -37,7 +63,7 @@ export function QueueList(props) {
     }, []);
 
     const handleNextCustomer = async () => {
-      await loadQueueList();
+      await loadNewQueueList();
     };
 
     const handleCounterSelection = (e) => {
@@ -62,7 +88,7 @@ export function QueueList(props) {
             queueList.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td>{item.serviceType}</td>
+                <td>{item.service}</td>
                 <td className="counter">{item.counter}</td>
               </tr>
             ))

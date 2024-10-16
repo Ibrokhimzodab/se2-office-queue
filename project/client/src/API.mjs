@@ -7,10 +7,10 @@ async function loadService() {
 }
 
 async function getTicket(service) {
-    const response = await fetch(`${url}/ticket?service=${service}`)
-    
+    const response = await fetch(`${url}/ticket?serviceId=${service}`)
         if(response.ok){
             const ticket = await response.json();
+            console.log(ticket)
             return ticket;
         }
         else {
@@ -22,15 +22,21 @@ async function getTicket(service) {
     
             throw "Something went wrong"
         }
+        
 }
 
-async function fetchQueueList(counterID) {
+async function callNext(counterID) {
     try {
-        const response = await fetch(`${url}/counters/${counterID}/next`);
-        
+        const response = await fetch(`${url}/counters/${counterID}/next`,
+            {
+                method: "POST",
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+        console.log('ok')
         if (response.ok) {
-            const queueList = await response.json();
-            return queueList;
+            return;
         } else {
             const errDetail = await response.json();
             if (errDetail.error)
@@ -38,7 +44,7 @@ async function fetchQueueList(counterID) {
             if (errDetail.message)
                 throw errDetail.message;
             
-            throw "Something went wrong while fetching the queue list.";
+            throw "Something went wrong while calling the next customer.";
         }
     } catch (error) {
         console.error(`Error fetching queue list for counter ${counterID}:`, error);
@@ -46,6 +52,12 @@ async function fetchQueueList(counterID) {
     }
 }
 
-const API ={loadService, getTicket, fetchQueueList}
+async function getQueue(params) {
+    const response = await fetch(`${url}/queues`)
+    const queue = await response.json()
+    return queue;
+}
+
+const API ={loadService, getTicket, callNext, getQueue}
 
 export default API;
