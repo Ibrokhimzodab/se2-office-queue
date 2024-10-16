@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../assets/style/GetTicketForm.css';
+import API from '../API.mjs'
 
 const MOCK_SERVICE_LIST = [
   1,3,4,5
@@ -17,8 +18,8 @@ export function GetTicketForm(props) {
         // Simulating service load
         const loadServiceList = async () => {
             try {
-                // Simulate loading the service list
-                setServiceList(MOCK_SERVICE_LIST);
+                const list = API.loadService();
+                setServiceList(list);
             } catch (error) {
                 console.error("Error loading service list:", error);
             } finally {
