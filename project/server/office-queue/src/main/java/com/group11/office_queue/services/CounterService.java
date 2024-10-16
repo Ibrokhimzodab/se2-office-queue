@@ -1,6 +1,7 @@
 package com.group11.office_queue.services;
 
 import com.group11.office_queue.models.NextCustomerDTO;
+import com.group11.office_queue.models.ServiceDTO;
 import com.group11.office_queue.repos.CountersRepository;
 import com.group11.office_queue.repos.ServicesRepository;
 import com.group11.office_queue.repos.TicketsRepository;
