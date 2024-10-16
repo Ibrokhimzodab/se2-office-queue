@@ -1,20 +1,16 @@
 const url = "http://localhost:8001"
 
-async function loadService(pathname) {
-    const response = await fetch(`${url}${pathname}`)
+async function loadService() {
+    const response = await fetch(`${url}/services`)
     const services = await response.json()
-    return services
+    let s_name ;
+    console.log(s_name)
+    services.forEach((s) => s_name.push(s.name))
+    return s_name;
 }
 
 async function getTicket(service) {
-    const response = await fetch(`${url}/add`,
-        {
-            method: "POST",
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(service)
-        })
+    const response = await fetch(`${url}/ticket?service=${service}` )
     
         if(response.ok){
             const ticket = await response.json();
@@ -34,4 +30,4 @@ async function getTicket(service) {
 
 const API ={loadService}
 
-export default API
+export default API;
