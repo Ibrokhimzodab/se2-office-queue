@@ -23,10 +23,4 @@ public class CounterService {
         // temporary return
         return new NextCustomerDTO("FOO-1");
     }
-
-    public ServiceDTO callCustomer(String waitListCode){
-
-        //temporary return
-        return new ServiceDTO(3, "name", 10);
-    }
 }
