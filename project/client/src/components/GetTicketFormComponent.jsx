@@ -3,6 +3,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../assets/style/GetTicketForm.css';
 import API from '../API.mjs'
+import {Service} from '../obj/Service.mjs'
 
 const MOCK_SERVICE_LIST = [
   1,3,4,5
@@ -11,6 +12,7 @@ const MOCK_SERVICE_LIST = [
 export function GetTicketForm(props) {
     const navigate = useNavigate();
     const [selectedService, setSelectedService] = useState(null);
+    const [selectID,setSelectID] = useState(null)
     const [serviceList, setServiceList] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -18,8 +20,13 @@ export function GetTicketForm(props) {
         // Simulating service load
         const loadServiceList = async () => {
             try {
-                const list = API.loadService();
-                setServiceList(list);
+                API.loadService().then((list) =>{
+                  let serv = []
+                  for(const l of list){
+                    serv.push(new Service(l.id,l.name))
+                  }
+                  setServiceList(serv);
+                })
             } catch (error) {
                 console.error("Error loading service list:", error);
             } finally {
@@ -30,13 +37,19 @@ export function GetTicketForm(props) {
     }, []);
 
     const handleServiceSelection = (e) => {
+        for(const l of serviceList){
+          if(l.name == e.target.value){
+            console.log('ok')
+            setSelectID(l.id)
+          }
+        }
         setSelectedService(e.target.value);
     };
 
     const handleGetTicketClick = () => {
         // Navigate only if a service is selected
         if (selectedService) {
-            navigate(`/ticket/${selectedService}`);
+            navigate(`/ticket/${selectedService}/${selectID}`);
         } else {
             alert("Please select a service.");
         }
@@ -54,7 +67,7 @@ export function GetTicketForm(props) {
               onChange={handleServiceSelection} >
                 <option value="" disabled>Select a service</option>
                 { serviceList.map((service) => 
-                  <option key={service} value={service}>{service}</option>
+                  <option key={service.id} value={service.name}>{service.name}</option>
                 )}
             </Form.Select>
           )}

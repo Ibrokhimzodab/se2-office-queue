@@ -11,7 +11,7 @@ function App() {
       <Route path='/' element={
           <GetTicketForm/>
       } />
-      <Route path='/ticket/:service' element={
+      <Route path='/ticket/:service/:id' element={
           <DisplayTicket/>
       } />
       <Route path='/queue' element={

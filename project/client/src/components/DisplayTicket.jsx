@@ -3,12 +3,13 @@ import { Card } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import '../assets/style/DisplayTicket.css';  // Importa il file CSS
 import API from '../API.mjs'
+import { Ticket } from "../obj/Ticket.mjs";
 
 export function DisplayTicket(props) {
   const navigate = useNavigate();
   const [counter, setCounter] = useState(30);
   const [ticket, setTicket] = useState();
-  const { service } = useParams();
+  const { service, id } = useParams();
   const [loading, setLoading] = useState(true)
 
 
@@ -16,8 +17,9 @@ export function DisplayTicket(props) {
     // Simulating service load
     const loadInfoTicket = async () => {
         try {
-            const ticket = API.getTicket(service);
-            setTicket(ticket);
+            API.getTicket(id).then((tick) =>{
+              setTicket(new Ticket(tick.id,tick.waitListCode))
+            })
         } catch (error) {
             console.error("Error getting ticket:", error);
         } finally {
@@ -41,11 +43,11 @@ export function DisplayTicket(props) {
   return (
     <div className="center-card">
       {!loading && <Card className="card" style={{ width: '18rem' }}>
-        <div className="card-number">{props.number}</div>
+        <div className="card-number">{ticket.id}</div>
         <Card.Body>
           <Card.Title className="card-title">{service}</Card.Title>
           <Card.Text className="card-text">
-            Estimated Waiting Time:
+            Estimated Waiting Time: {ticket.waitListCode}
           </Card.Text>
         </Card.Body>
       </Card>}
