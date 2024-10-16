@@ -1,6 +1,7 @@
 package com.group11.office_queue.services;
 
 import com.group11.office_queue.models.NextCustomerDTO;
+import com.group11.office_queue.models.ServiceDTO;
 import com.group11.office_queue.repos.CountersRepository;
 import com.group11.office_queue.repos.ServicesRepository;
 import com.group11.office_queue.repos.TicketsRepository;
@@ -21,5 +22,11 @@ public class CounterService {
     public NextCustomerDTO nextCustomer(String counterId) {
         // temporary return
         return new NextCustomerDTO("FOO-1");
+    }
+
+    public ServiceDTO callCustomer(String waitListCode){
+
+        //temporary return
+        return new ServiceDTO(3, "name", 10);
     }
 }
