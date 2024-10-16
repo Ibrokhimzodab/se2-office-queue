@@ -3,6 +3,7 @@ package com.group11.office_queue.services;
 import com.group11.office_queue.entities.CounterEntity;
 import com.group11.office_queue.entities.ServiceEntity;
 import com.group11.office_queue.entities.TicketEntity;
+import com.group11.office_queue.models.QueueDTO;
 import com.group11.office_queue.models.ServiceDTO;
 import com.group11.office_queue.models.TicketDTO;
 import com.group11.office_queue.repos.CountersRepository;
@@ -14,8 +15,12 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -69,5 +74,33 @@ public class TicketService {
             serviceDTO.setDurationInMinutes(serviceEntity.getDurationInMinutes());
             return serviceDTO;
         }).toList();
+    }
+
+    public List<QueueDTO> getAllTicketsInQueues() {
+        var todayStartingTime = LocalDateTime.now().withHour(6).withMinute(0).withSecond(0).withNano(0);
+        var tickets = ticketRepository.findAllByIsServedFalseAndDateTimeAfter(todayStartingTime);
+        Map<ServiceEntity, TicketEntity> ticketMap = tickets.stream()
+                .sorted(Comparator.comparing(TicketEntity::getDateTime))
+                .collect(Collectors.toMap(
+                        TicketEntity::getService,
+                        ticket -> ticket,
+                        (existing, replacement) -> existing,
+                        LinkedHashMap::new
+                ));
+        return ticketMap.entrySet().stream().map(entry -> {
+            var queueDTO = new QueueDTO();
+            queueDTO.setServiceId(entry.getKey().getId());
+            queueDTO.setServiceName(entry.getKey().getName());
+            queueDTO.setTickets(List.of(new TicketDTO(
+                    entry.getValue().getId(),
+                    entry.getValue().getWaitListCode(),
+                    entry.getValue().getDateTime(),
+                    entry.getKey().getId(),
+                    entry.getKey().getName(),
+                    null
+            )));
+            return queueDTO;
+        }).toList();
+
     }
 }

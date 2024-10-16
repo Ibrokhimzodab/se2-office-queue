@@ -1,6 +1,7 @@
 package com.group11.office_queue.controllers;
 
 import com.group11.office_queue.models.NextCustomerDTO;
+import com.group11.office_queue.models.QueueDTO;
 import com.group11.office_queue.models.ServiceDTO;
 import com.group11.office_queue.models.TicketDTO;
 import com.group11.office_queue.services.CounterService;
@@ -34,10 +35,8 @@ public class Controller {
         return ResponseEntity.ok(counterService.nextCustomer(counterId));
     }
 
-    @GetMapping("/call/{waitListCode}")
-    public ResponseEntity<ServiceDTO> callCustomer(@PathVariable String waitListCode) {
-        return ResponseEntity.ok(counterService.callCustomer(waitListCode));
+    @GetMapping("/queues")
+    public ResponseEntity<List<QueueDTO>> getAllTicketsInQueues() {
+        return ResponseEntity.ok(ticketService.getAllTicketsInQueues());
     }
-
-
 }
