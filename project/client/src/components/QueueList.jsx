@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button, Container } from 'react-bootstrap';
+import { Table, Button, Container, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../assets/style/QueueListCSS.css';
 // Mocked API function for demonstration purposes
@@ -16,6 +16,8 @@ export function QueueList(props) {
     const [queueList, setQueueList] = useState([]);  
     const [loading, setLoading] = useState(true);    
     const [error, setError] = useState(null); 
+    const [counter, setCounter] = useState();
+    const [selectedCounter,setSelectedCounter] = useState();
 
     const loadQueueList = async () => {
       try {
@@ -36,6 +38,10 @@ export function QueueList(props) {
     const handleNextCustomer = async () => {
       await loadQueueList();
     };
+
+    const handleCounterSelection = (e) => {
+      setCounter(e.target.value);
+  };
 
     if (error) {
       return <div className="error-message">{error}</div>;
@@ -66,6 +72,16 @@ export function QueueList(props) {
           )}
         </tbody>
     </Table>
+    <Form.Select 
+              aria-label="counter-list" 
+              value={selectedCounter || ''}
+              onChange={handleCounterSelection} >
+                <option value="" disabled>Select a counter</option>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+            </Form.Select>
     <Button className='button_call' onClick={handleNextCustomer}>Call next</Button>
     </Container>
     );
