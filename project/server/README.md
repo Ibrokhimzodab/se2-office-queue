@@ -10,7 +10,7 @@ Postgresql version: 14
 
 login to postgresql
 ```bash
-psql postgresl
+psql postgres
 ```
 Create postgres user if not exist
 ```bash
