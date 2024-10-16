@@ -33,4 +33,13 @@ public class ServiceEntity {
     private String name;
 
     private Integer durationInMinutes;
+
+    public ServiceEntity(String name, Integer durationInMinutes) {
+        this.name = name;
+        this.durationInMinutes = durationInMinutes;
+    }
+
+    public ServiceEntity() {
+
+    }
 }

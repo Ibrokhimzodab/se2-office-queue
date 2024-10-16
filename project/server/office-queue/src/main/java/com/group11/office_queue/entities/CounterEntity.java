@@ -24,4 +24,12 @@ public class CounterEntity {
     private Set<ServiceEntity> services = new HashSet<>();
 
     private String name;
+
+    public CounterEntity(String name) {
+        this.name = name;
+    }
+
+    public CounterEntity() {
+
+    }
 }
