@@ -26,8 +26,13 @@ export function QueueList(props) {
         setLoading(true);
         const list = await API.getQueue().then((my_q) =>{
           let queue = []
+          console.log(my_q)
           for(const q of my_q){
-            queue.push(new Ticket(q.tickets[0].waitListCode,0,q.serviceName,0))
+            for(const t of q.tickets)
+            {
+              queue.push(new Ticket(t.waitListCode,0,q.serviceName,0))
+            }
+            
           }
           
           setQueueList(queue);
@@ -63,6 +68,7 @@ export function QueueList(props) {
     }, []);
 
     const handleNextCustomer = async () => {
+      console.log(counter)
       await loadNewQueueList();
     };
 
