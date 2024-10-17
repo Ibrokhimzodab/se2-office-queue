@@ -8,7 +8,7 @@ sections:
 - [quality measures](#quality-measures)
 - [general assessment](#assessment)
 
-## PROCESS MEASURES 
+## PROCESS MEASURES
 
 ### Macro statistics
 
