@@ -8,7 +8,7 @@ sections:
 - [quality measures](#quality-measures)
 - [general assessment](#assessment)
 
-## PROCESS MEASURES 
+## PROCESS MEASURES
 
 ### Macro statistics
 
@@ -62,7 +62,7 @@ sections:
 
     res: 0.12
 
-## QUALITY MEASURES 
+## QUALITY MEASURES
 
 - Unit Testing:
   - Total hours estimated: 0
@@ -86,8 +86,8 @@ sections:
 
 - What lessons did you learn (both positive and negative) in this sprint?
 
-  We should have more meeting session to improve the cooperation, for example between the back-end and front-end team. 
-  As positive we could say that we were able to deliver something.
+  We should have more meeting sessions to improve the cooperation, for example between the back-end and front-end team. 
+  As a positive aspect we could say that we were able to deliver something.
 
 - Which improvement goals set in the previous retrospective were you able to achieve? 
   
