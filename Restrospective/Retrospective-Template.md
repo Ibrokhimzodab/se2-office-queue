@@ -13,8 +13,14 @@ sections:
 ### Macro statistics
 
 - Number of stories committed vs. done 
+
+  3/0
 - Total points committed vs. done 
+
+  10/0
 - Nr of hours planned vs. spent (as a team)
+
+  93/83.5
 
 **Remember**a story is done ONLY if it fits the Definition of Done:
  
@@ -27,23 +33,31 @@ sections:
 
 ### Detailed statistics
 
-| Story  | # Tasks | Points | Hours est. | Hours actual |
-|--------|---------|--------|------------|--------------|
-| _#0_   |         |       |            |              |
-| n      |         |        |            |              |
+| Story | # Tasks | Points | Hours est. | Hours actual |
+|-------|---------|--------|------------|--------------|
+| _#0_  | 14      |        | 49         | 38.5         |
+| _#1_  | 7       | 5      | 21.5       | 20.5         |
+| _#2_  | 5       | 3      | 14         | 12.5         |
+| _#3_  | 5       | 2      | 14         | 12           |
    
 
 > story `#0` is for technical tasks, leave out story points (not applicable in this case)
 
 - Hours per task average, standard deviation (estimate and actual)
+
+ (83.5/98.5)-1=-0.15
+ (83.5/31)=2.69
+
 - Total estimation error ratio: sum of total hours spent / sum of total hours effort - 1
 
     $$\frac{\sum_i spent_{task_i}}{\sum_i estimation_{task_i}} - 1$$
-    
+
+  (83.5/98.5)-1=-0.15
+
 - Absolute relative task estimation error: sum( abs( spent-task-i / estimation-task-i - 1))/n
 
     $$\frac{1}{n}\sum_i^n \left| \frac{spent_{task_i}}{estimation_task_i}-1 \right| $$
-  
+
 ## QUALITY MEASURES 
 
 - Unit Testing:
