@@ -46,6 +46,7 @@ sections:
 - Hours per task average, standard deviation (estimate and actual)
 
  (83.5/98.5)-1=-0.15
+
  (83.5/31)=2.69
 
 - Total estimation error ratio: sum of total hours spent / sum of total hours effort - 1
