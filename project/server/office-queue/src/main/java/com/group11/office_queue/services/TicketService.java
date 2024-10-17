@@ -103,7 +103,8 @@ public class TicketService {
                             ticket.getDateTime(),
                             entry.getKey().getId(),
                             entry.getKey().getName(),
-                            null
+                            null,
+                            ticket.getCounter()
                     ))
                     .collect(Collectors.toList()));
             return queueDTO;

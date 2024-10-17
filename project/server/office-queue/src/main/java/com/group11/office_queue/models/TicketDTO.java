@@ -1,5 +1,6 @@
 package com.group11.office_queue.models;
 
+import com.group11.office_queue.entities.CounterEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,5 @@ public class TicketDTO {
     private Long serviceId;
     private String serviceName;
     private LocalTime estimatedTime;
+    private CounterEntity counter;
 }
