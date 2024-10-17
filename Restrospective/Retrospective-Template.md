@@ -54,11 +54,13 @@ sections:
 
     $$\frac{\sum_i spent_{task_i}}{\sum_i estimation_{task_i}} - 1$$
 
-  (82.3/97)-1=-0.15
+    res-0.15
 
 - Absolute relative task estimation error: sum( abs( spent-task-i / estimation-task-i - 1))/n
 
     $$\frac{1}{n}\sum_i^n \left| \frac{spent_{task_i}}{estimation_task_i}-1 \right| $$
+
+    res: 0.12
 
 ## QUALITY MEASURES 
 
