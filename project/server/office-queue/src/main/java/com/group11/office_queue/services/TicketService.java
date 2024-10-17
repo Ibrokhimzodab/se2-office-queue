@@ -104,7 +104,7 @@ public class TicketService {
                             entry.getKey().getId(),
                             entry.getKey().getName(),
                             null,
-                            ticket.getCounter().getId()
+                            ticket.getCounter() == null ? null : ticket.getCounter().getId()
                     ))
                     .collect(Collectors.toList()));
             return queueDTO;
