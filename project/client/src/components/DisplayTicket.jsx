@@ -8,7 +8,8 @@ import { Ticket } from "../obj/Ticket.mjs";
 export function DisplayTicket(props) {
   const navigate = useNavigate();
   const [counter, setCounter] = useState(30);
-  const [ticket, setTicket] = useState();
+  const [ticketID, setTicketID] = useState('');
+  const [wait,setWait] = useState('')
   const { service, id } = useParams();
   const [loading, setLoading] = useState(true)
 
@@ -18,7 +19,8 @@ export function DisplayTicket(props) {
     const loadInfoTicket = async () => {
         try {
             API.getTicket(id).then((tick) =>{
-              setTicket(new Ticket(tick.waitListCode,tick.estimatedTime))
+              setTicketID(tick.waitListCode);
+              setWait(tick.estimatedTime)
             })
         } catch (error) {
             console.error("Error getting ticket:", error);
@@ -43,11 +45,11 @@ export function DisplayTicket(props) {
   return (
     <div className="center-card">
       {!loading && <Card className="card" style={{ width: '18rem' }}>
-        <div className="card-number">{ticket.id}</div>
+        <div className="card-number">{ticketID}</div>
         <Card.Body>
           <Card.Title className="card-title">{service}</Card.Title>
           <Card.Text className="card-text">
-            Estimated Waiting Time: {ticket.waitListCode}
+            Estimated Waiting Time: {wait}
           </Card.Text>
         </Card.Body>
       </Card>}

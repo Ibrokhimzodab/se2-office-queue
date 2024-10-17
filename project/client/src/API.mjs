@@ -10,7 +10,6 @@ async function getTicket(service) {
     const response = await fetch(`${url}/ticket?serviceId=${service}`)
         if(response.ok){
             const ticket = await response.json();
-            console.log(ticket)
             return ticket;
         }
         else {
@@ -34,7 +33,6 @@ async function callNext(counterID) {
                     'Content-Type':'application/json'
                 }
             })
-        console.log('ok')
         if (response.ok) {
             return;
         } else {
