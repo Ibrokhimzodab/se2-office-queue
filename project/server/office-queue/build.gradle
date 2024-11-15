@@ -23,6 +23,18 @@ repositories {
 	mavenCentral()
 }
 
+plugins {
+  id "org.sonarqube" version "5.1.0.4882"
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "SE2-GROUP11_se2-office-queue"
+    property "sonar.organization", "se2-group11"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
